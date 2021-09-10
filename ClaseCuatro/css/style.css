@@ -1,0 +1,7 @@
+/*estilos globales*/
+* {
+  font-family: "Playfair Display", serif;
+}
+.navbar {
+  background-color: rgb(255, 244, 148);
+}
