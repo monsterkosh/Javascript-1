@@ -3,9 +3,24 @@ const suma = (a, b) => a + b;
 const resta = (a, b) => a - b;
 const montoTotal = (a, b) =>
   resta(
-    suma(suma(a.precio, b.precio), suma(a.iva(), b.iva())),
+    suma(
+      suma(a.precio * a.cantidad, b.precio * b.cantidad),
+      suma(a.iva(), b.iva())
+    ),
     suma(a.descuento(), b.descuento())
   );
+function verification(param1, param2) {
+  while (isNaN(param1) || isNaN(param2)) {
+    alert("solo numeros");
+    cantidad1 = parseInt(prompt("ingrese cantidad de producto 1"));
+    cantidad2 = parseInt(prompt("ingrese cantidad de producto 2"));
+    verification(cantidad1, cantidad2);
+    break;
+  }
+}
+/*variables globales*/
+let cantidad1 = parseInt(prompt("ingrese cantidad de producto 1"));
+let cantidad2 = parseInt(prompt("ingrese cantidad de producto 2"));
 
 /*clases*/
 class producto {
@@ -21,14 +36,9 @@ class producto {
   }
 }
 /*objetos*/
-const producto1 = new producto(
-  200,
-  parseInt(prompt("ingrese cantidad de producto1"))
-);
-const producto2 = new producto(
-  100,
-  parseInt(prompt("ingrese cantidad de producto2"))
-);
+const producto1 = new producto(200, cantidad1);
+const producto2 = new producto(100, cantidad2);
 
+verification(cantidad1, cantidad2);
 let resultado = montoTotal(producto1, producto2);
 alert("su total es " + resultado);
