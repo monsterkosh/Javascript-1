@@ -1,7 +1,13 @@
 /*variables globales*/
-
-let cantidad1 = parseInt(prompt("ingrese cantidad de producto 1"));
-let cantidad2 = parseInt(prompt("ingrese cantidad de producto 2"));
+let saludo = alert(
+  "Bienvenidx a la tienda: nuestros productos son: 1-Agenda 2-Anotador"
+);
+let cantidad1 = parseInt(
+  prompt("ingrese cantidad de producto 1 (Agenda, precio:$200)")
+);
+let cantidad2 = parseInt(
+  prompt("ingrese cantidad de producto 2(Anotador, precio:$100)")
+);
 
 /*funciones globales*/
 const suma = (a, b) => a + b;
@@ -44,3 +50,4 @@ productos.push(new producto("anotador", 100, cantidad2));
 
 let resultado = montoTotal(productos[0], productos[1]);
 alert("su total es " + resultado);
+alert("Gracias por tu compra!");
