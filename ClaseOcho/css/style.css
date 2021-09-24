@@ -1,0 +1,10 @@
+/*estilos globales*/
+* {
+  font-family: "Varela Round", sans-serif;
+}
+.navbar {
+  background-color: rgb(255, 244, 148);
+}
+.navbar-brand {
+  color: darkorange;
+}
