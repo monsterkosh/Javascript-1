@@ -55,3 +55,6 @@ alert("Gracias por tu compra!");
 let total = document.createElement("h2");
 total.innerHTML = "su total es " + resultado;
 document.body.appendChild(total);
+
+let nroProductos = document.getElementById("Prod");
+console.log(nroProductos.innerHTML);
