@@ -8,6 +8,11 @@ let cantidad1 = parseInt(
 let cantidad2 = parseInt(
   prompt("ingrese cantidad de producto 2(Anotador, precio:$100)")
 );
+let test = document.getElementById("test");
+let precio1 = parseInt(test.innerHTML);
+
+let test2 = document.getElementById("test2");
+let precio2 = parseInt(test2.innerHTML);
 
 /*funciones globales*/
 const suma = (a, b) => a + b;
@@ -45,8 +50,8 @@ class producto {
 }
 /*objetos y arrays*/
 const productos = [];
-productos.push(new producto("agenda", 200, cantidad1));
-productos.push(new producto("anotador", 100, cantidad2));
+productos.push(new producto("agenda", precio1, cantidad1));
+productos.push(new producto("anotador", precio2, cantidad2));
 
 let resultado = montoTotal(productos[0], productos[1]);
 alert("su total es " + resultado);
@@ -55,6 +60,3 @@ alert("Gracias por tu compra!");
 let total = document.createElement("h2");
 total.innerHTML = "su total es " + resultado;
 document.body.appendChild(total);
-
-let nroProductos = document.getElementById("Prod");
-console.log(nroProductos.innerHTML);
