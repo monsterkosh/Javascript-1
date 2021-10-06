@@ -31,7 +31,7 @@
     <img src="./media/logo.png" alt="">
   </div>
 <div class="text-center m-4">
-<button id="boton" class=" btn btn-warning">Iniciar Compra</button>
+
 </div>
     <div id="carousel" class="carousel slide" data-ride="carousel">
       <div class="carousel-inner">
@@ -52,14 +52,18 @@
         <img src="./media/index.jpg" alt="" />
         <p>Agenda</p>
         <p>$200</p>
-        <a class="btn btn-outline-warning" href="#!">Comprar</a>
+        <input id = "qty1" class="mb-2"  type="number">
+<br>
+        <button id="botonp1" class="m-2 btn btn-outline-warning"  >Comprar</button>
       </div>
 
       <div class="col-4 py-3">
         <img src="./media/index.jpg" alt="" />
         <p>Anotador</p>
         <p>$100</p>
-        <a class="btn btn-outline-warning" href="#!">Comprar</a>
+        <input id = "qty2" class="mb-2"  type="number">
+        <br>
+        <button id="botonp2"  class="m-2 btn btn-outline-warning" href="#!">Comprar</button>
       </div>
 
       <div class="col-4 py-3">
@@ -69,13 +73,15 @@
         <a class="btn btn-outline-warning" href="#!">Comprar</a>
         </div>
       </div>
-
-      
-
+      <div class="text-center">
+      <button id="boton" class=" btn btn-warning m-4">finalizar Compra</button>
     </div>
+    <script src="./main.js"></script>
+    </div>
+    
     <footer class="text-center bg-light my-1">
         <p>Todos los derechos reservados. Copyright 2021.</p>
     </footer>
-    <script src="./main.js"></script>
+   
   </body>
 </html>
