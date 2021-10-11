@@ -60,10 +60,10 @@ console.log(almacenados);
 /*funcionamiento simulador*/
 $("#boton").on("click", () => {
   let resultado = montoTotal(productos[0], productos[1]);
-  $(`body`).append(`<div class="text-center">
-  <h3>Carrito: </h3>
+  $(`#carrito`).append(`<div class="text-center">
+  <h2>Carrito: </h2>
 <h4>${productos[0].nombre}: ${productos[0].cantidad} </h4>
 <h4>${productos[1].nombre}: ${productos[1].cantidad} </h4>
-  <h4>su total es ${resultado} </h4>
+  <h3>su total es ${resultado} </h3>
   </div>`);
 });
