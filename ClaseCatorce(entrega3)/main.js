@@ -24,13 +24,13 @@ let agregarProducto1 = () => {
   }
   productos.push(new Producto("agenda", 200, cantidad1));
   guardarLocal("lista productos", JSON.stringify(productos));
-  if ($(`#botonp1`).val() == `Comprar`) {
-    $(`#botonp1`).append(`Agenda agregado`);
-  }
+  $(`#botonp1`).append(`<h5> Agenda agregada</h5>`);
 };
 
 botonp1.addEventListener("click", agregarProducto1);
-
+$(`#botonp1`).click(() => {
+  $(`#botonp1`).prop("disabled", true);
+});
 let botonp2 = document.getElementById("botonp2");
 
 let agregarProducto2 = () => {
@@ -40,13 +40,13 @@ let agregarProducto2 = () => {
   }
   productos.push(new Producto("anotador", 100, cantidad2));
   guardarLocal("lista productos", JSON.stringify(productos));
-  if ($(`#botonp2`).val() == `Comprar`) {
-    $(`#botonp2`).append(`/Anotador agregado`);
-  }
+  $(`#botonp2`).append(`<h5> Anotador agregado</h5>`);
 };
 
 botonp2.addEventListener("click", agregarProducto2);
-
+$(`#botonp2`).click(() => {
+  $(`#botonp2`).prop("disabled", true);
+});
 /*funciones globales*/
 const suma = (a, b) => a + b;
 const resta = (a, b) => a - b;
