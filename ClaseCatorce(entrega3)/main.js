@@ -19,7 +19,7 @@ const productos = [];
 let botonp1 = document.getElementById("botonp1");
 let agregarProducto1 = () => {
   let cantidad1 = parseInt(document.getElementById("qty1").value);
-  if (cantidad1 == NaN) {
+  if (isNaN(cantidad1)) {
     alert("ingrese nro válido");
   }
   productos.push(new Producto("agenda", 200, cantidad1));
@@ -35,7 +35,7 @@ let botonp2 = document.getElementById("botonp2");
 
 let agregarProducto2 = () => {
   let cantidad2 = parseInt(document.getElementById("qty2").value);
-  if (cantidad2 == NaN) {
+  if (isNaN(cantidad2)) {
     alert("ingrese nro válido");
   }
   productos.push(new Producto("anotador", 100, cantidad2));

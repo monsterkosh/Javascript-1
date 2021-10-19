@@ -80,12 +80,12 @@ urlget = "https://jsonplaceholder.typicode.com/posts";
 let mail = $(`#mail`).val();
 
 $(`#news`).click(() => {
-  $.postajax({
+  $.ajax({
     method: "POST",
     url: urlget,
     data: mail,
     success: () => {
-      $(`#mensaje`).append("<h3>Registrado</h3>");
+      $(`#mensaje`).append("<h3>Registrado!</h3>");
     },
   });
 });
