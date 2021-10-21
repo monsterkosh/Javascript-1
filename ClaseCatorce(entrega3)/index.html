@@ -13,6 +13,9 @@
       crossorigin="anonymous"
     />
     <link rel="stylesheet" href="./css/style.css">
+    
+    <script src="sweetalert2.min.js"></script>
+  <link rel="stylesheet" href="sweetalert2.min.css">
   </head>
 
   <body>
@@ -48,42 +51,42 @@
     </div>
 
     <h2 class="text-center py-3">Productos destacados</h2>
+   
     <div class="row px-4 mx-3 text-center">
 
       <div class="col-4 py-3">
         <img src="./media/index.jpg" alt="" width="200vr"/>
         <p>Agenda</p>
         <p>$200</p>
-       
-        <input id = "qty1" class="mb-2"  type="number" required>
 <br>
-        <button type="submit" id="botonp1" class="m-2 btn btn-outline-warning" value="" >Comprar</button>
-      
+        <button  id="botonp1" class="btn btn-outline-warning" value="" >Comprar</button>
       </div>
 
       <div class="col-4 py-3">
         <img src="./media/producto2.jpg" alt="" width="200vr" />
         <p>Anotador</p>
         <p>$100</p>
-        
-        <input  id = "qty2" class="mb-2"  type="number" required>
         <br>
-        <button type="submit" id="botonp2"  class="m-2 btn btn-outline-warning" value="">Comprar</button>
+        <button id="botonp2"  class=" btn btn-outline-warning" value="">Comprar</button>
      
       </div>
 
+
+      
       <div class="col-4 py-3">
         <img src="./media/producto3.jpg" alt="" width="200vr"/>
         <p>Cuaderno</p>
         <p>$300</p>
-        <button class="btn btn-secondary">Próximamente</button>
+        <button class="btn btn-secondary m-4">Próximamente</button>
         </div>
       </div>
+
       <div class="text-center">
       <button id="boton" class=" btn btn-warning m-4">finalizar Compra</button>
       </div>
     </div>
   </div>
+  
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script src="./main.js"></script>
