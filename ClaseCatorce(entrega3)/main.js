@@ -24,26 +24,24 @@ const productos = [];
 
 /*boton 1*/
 
-//let botonp1 = document.getElementById("botonp1");
 let cantidad1 = 0;
+productos.push(new Producto("agenda", 200, cantidad1));
+guardarLocal("lista productos", JSON.stringify(productos));
 $(`#botonp1`).click(() => {
-  cantidad1 += 1;
-  productos.push(new Producto("agenda", 200, cantidad1));
-  guardarLocal("lista productos", JSON.stringify(productos));
+  productos[0].cantidad++;
   console.log("producto agregado");
-  Swal.fire("Producto agregado", "Producto agregado al carrito", "success");
+  Swal.fire("Producto agregado", "Agenda agregada al carrito", "success");
 });
 
 /*boton 2*/
 
 let cantidad2 = 0;
+productos.push(new Producto("anotador", 100, cantidad2));
+guardarLocal("lista productos", JSON.stringify(productos));
 $(`#botonp2`).click(() => {
-  cantidad2 += 1;
-
-  productos.push(new Producto("anotador", 100, cantidad2));
-  guardarLocal("lista productos", JSON.stringify(productos));
+  productos[1].cantidad++;
   console.log("producto agregado");
-  Swal.fire("Producto agregado", "Producto agregado al carrito", "success");
+  Swal.fire("Producto agregado", "Anotador agregado al carrito", "success");
 });
 
 /*funciones globales*/
