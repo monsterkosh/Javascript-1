@@ -79,3 +79,25 @@ $("#boton").on("click", () => {
 $(`#logo`).click(() => {
   $(`#logo`).slideUp(`fast`).delay(1000).slideDown(`fast`);
 });
+
+/*newsletter*/
+urlget = "https://jsonplaceholder.typicode.com/posts";
+let mail = $(`#mail`).val();
+
+$(`#news`).click(() => {
+  $.ajax({
+    method: "POST",
+    url: urlget,
+    data: mail,
+    success: () => {
+      $(`#mensaje`).append("<h3>Registrado!</h3>");
+      $(`#news`).prop("disabled", true);
+    },
+  });
+});
+
+/*busqueda
+$(`#buscar`).click(() => {
+
+});
+*/
