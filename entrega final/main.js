@@ -58,26 +58,21 @@ const montoTotal = (a, b) =>
 
 /*funcionamiento simulador*/
 $("#boton").on("click", () => {
+  $(`#prod1`).prepend(
+    ` <p>${productos[0].nombre}: ${productos[0].cantidad} </p>`
+  );
+  //$(`#inputValor1`).setAttribute(`value`, `${productos[0].cantidad}`);
+  $(`#inputValor1`).value = `${productos[0].cantidad}`;
+  $(`#prod2`).prepend(
+    `<p>${productos[1].nombre}: ${productos[1].cantidad} </p>`
+  );
+  // $(`#inputValor2`).setAttribute(`value`, `${productos[1].cantidad}`);
+  $(`#inputValor2`).value = `${productos[1].cantidad}`;
+
   let resultado = montoTotal(productos[0], productos[1]);
-  if ($(`#contCarrito`).length == 0) {
-    $(`#carrito`).append(`<div id="contCarrito" class="text-center">
-    <h2 class="display-4">Carrito:</h2>
-    <div class="row text-center">
-    <div class="col-6">
-      <p>${productos[0].nombre}: ${productos[0].cantidad} </p>
-      <input type="number" min="0" value="${productos[1].cantidad}"></input>
-    </div>
-    <div class="col-6">
-      <p>${productos[1].nombre}: ${productos[1].cantidad} </p>
-      <input type="number" min="0" value="${productos[1].cantidad}"></input>
-    </div>
-    </div>
-    <div class="m-3">
-      <h3>su total es ${resultado} </h3>
-   
-    </div>
-      </div>`);
-  }
+  $(`#total`).append(`${resultado}`);
+  $(`#boton`).prop("disabled", true);
+  $(`#mostrar`).show();
 });
 
 /*animaciones*/
