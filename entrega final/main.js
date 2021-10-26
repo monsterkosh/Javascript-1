@@ -43,7 +43,7 @@ $(`#botonp2`).click(() => {
   console.log("producto agregado");
   Swal.fire("Producto agregado", "Anotador agregado al carrito", "success");
 });
-
+productos.push(new Producto("Cuaderno", 300, 0));
 /*funciones globales*/
 const suma = (a, b) => a + b;
 const resta = (a, b) => a - b;
@@ -58,19 +58,26 @@ const montoTotal = (a, b) =>
 
 /*funcionamiento simulador*/
 $("#boton").on("click", () => {
+  /*cantidad 1*/
   $(`#prod1`).prepend(
-    ` <p>${productos[0].nombre}: ${productos[0].cantidad} </p>`
+    `<div class=""> <p>${productos[0].nombre}: ${productos[0].cantidad} </p> </div>`
   );
-  //$(`#inputValor1`).setAttribute(`value`, `${productos[0].cantidad}`);
-  $(`#inputValor1`).value = `${productos[0].cantidad}`;
+  let inputValor1 = document.getElementById(`inputValor1`);
+  inputValor1.setAttribute(`value`, `${productos[0].cantidad}`);
+  //productos[0].cantidad = parseInt(inputValor1);
+  /*cantidad 2*/
   $(`#prod2`).prepend(
-    `<p>${productos[1].nombre}: ${productos[1].cantidad} </p>`
+    `<div class=""> <p>${productos[1].nombre}: ${productos[1].cantidad} </p> </div>`
   );
-  // $(`#inputValor2`).setAttribute(`value`, `${productos[1].cantidad}`);
-  $(`#inputValor2`).value = `${productos[1].cantidad}`;
-
+  let inputValor2 = document.getElementById(`inputValor2`);
+  inputValor2.setAttribute(`value`, `${productos[1].cantidad}`);
+  //productos[1].cantidad = parseInt(inputValor2);
   let resultado = montoTotal(productos[0], productos[1]);
+  /*resultado*/
   $(`#total`).append(`${resultado}`);
+
+  $(`#botonp1`).prop("disabled", true);
+  $(`#botonp2`).prop("disabled", true);
   $(`#boton`).prop("disabled", true);
   $(`#mostrar`).show();
 });
@@ -98,9 +105,12 @@ $(`#news`).click(() => {
 
 /*busqueda*/
 $(`#buscar`).click(() => {
-  let infoBusqueda = $(`#stringBusqueda`).value;
+  let infoBusqueda = document
+    .getElementById(`stringBusqueda`)
+    .value.toLowerCase();
+
   const resultadosFiltro = productos.filter((product) => {
-    const nombreProducto = product.nombre;
+    const nombreProducto = product.nombre.toLowerCase();
     return nombreProducto.includes(infoBusqueda);
   });
   console.log(resultadosFiltro);

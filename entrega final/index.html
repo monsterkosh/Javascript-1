@@ -18,15 +18,18 @@
   </head>
 
   <body>
+    
 <div id="carrito">
     <nav class="navbar expand-lg">
       <div class="container">
        
-      <div href="" class="navbar-brand">Lara Barovero</div>
-      <form class="form-inline my-2 my-lg-0">
-        <input id="stringBusqueda" class="form-control mr-sm-2" >
+      <div href="" class="navbar-brand">
+      <img src="./media/laralogo.png" width="150vr" alt="">  
+      </div>
+      <div class="form-inline my-2 my-lg-0">
+        <input id="stringBusqueda" class="form-control mr-sm-2" value="">
         <button id="buscar" class="btn btn-outline-warning my-2 my-sm-0">Buscar</button>
-      </form>
+      </div>
     </button>
        
     </div>
@@ -35,7 +38,7 @@
     <img id="logo" src="./media/logo.png" alt="">
   </div>
 <div class="text-center m-4">
-
+  <div id="resultadoBusqueda">
 </div>
     <div id="carousel" class="carousel slide" data-ride="carousel">
       <div class="carousel-inner">
@@ -49,6 +52,7 @@
       
     </div>
 
+</div>
     <h2 class="text-center py-3">Productos destacados</h2>
    
     <div class="row px-4 mx-3 text-center">
@@ -88,12 +92,12 @@
 <div id="mostrar" style="display: none;">
   <div id="contCarrito" class="text-center">
     <h2 class="display-4">Carrito:</h2>
-    <div  class="row text-center">
-    <div id="prod1" class="col-6">
+    <div  class="row  text-center">
+    <div id="prod1" class="col">
      
       <input id="inputValor1" type="number" min="0" ></input>
     </div>
-    <div id="prod2" class="col-6">
+    <div id="prod2" class="col">
       
       <input id="inputValor2" type="number" min="0" ></input>
     </div>
