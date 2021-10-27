@@ -13,7 +13,7 @@
       crossorigin="anonymous"
     />
     <link rel="stylesheet" href="./css/style.css">
-    <link rel="stylesheet" href="sweetalert2.min.css">
+
    
   </head>
 
@@ -54,37 +54,10 @@
 
 </div>
     <h2 class="text-center py-3">Productos destacados</h2>
-   
-    <div class="row px-4 mx-3 text-center">
+    <div id="cards" class="row px-4 mx-3 text-center">
+   </div>
 
-      <div class="col-4 py-3">
-        <img src="./media/index.jpg" alt="" width="200vr"/>
-        <p>Agenda</p>
-        <p>$200</p>
-<br>
-        <button  id="botonp1" class="btn btn-outline-warning" value="" >Comprar</button>
-      </div>
-
-      <div class="col-4 py-3">
-        <img src="./media/producto2.jpg" alt="" width="200vr" />
-        <p>Anotador</p>
-        <p>$100</p>
-        <br>
-        <button id="botonp2"  class=" btn btn-outline-warning" value="">Comprar</button>
-     
-      </div>
-
-
-      
-      <div class="col-4 py-3">
-        <img src="./media/producto3.jpg" alt="" width="200vr"/>
-        <p>Cuaderno</p>
-        <p>$300</p>
-        <button class="btn btn-secondary m-4">Próximamente</button>
-        </div>
-      </div>
-
-      <div class="text-center">
+      <div id="resetBusqueda" class="text-center">
       <button id="boton" class=" btn btn-warning m-4">finalizar Compra</button>
       </div>
     </div>
@@ -93,14 +66,8 @@
   <div id="contCarrito" class="text-center">
     <h2 class="display-4">Carrito:</h2>
     <div  class="row  text-center">
-    <div id="prod1" class="col">
-     
-      <input id="inputValor1" type="number" min="0" ></input>
-    </div>
-    <div id="prod2" class="col">
-      
-      <input id="inputValor2" type="number" min="0" ></input>
-    </div>
+   
+    
     </div>
     <div class="m-3">
       <h3 id="total">su total es: </h3>
@@ -122,8 +89,8 @@
   </div>
 
   <script src="  https://cdn.jsdelivr.net/npm/sweetalert2@11.1.9/dist/sweetalert2.all.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-    <script src="./main.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <script src="./main.js"></script>
     <footer class="text-center bg-light my-1">
         <p>Todos los derechos reservados. Copyright 2021.</p>
     </footer>
