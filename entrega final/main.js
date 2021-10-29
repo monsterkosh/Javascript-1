@@ -1,9 +1,9 @@
 /*clases*/
 class Producto {
-  constructor(nombre, precio) {
+  constructor(nombre, precio, cantidad) {
     this.nombre = nombre;
     this.precio = parseFloat(precio);
-    this.cantidad = 0;
+    this.cantidad = cantidad;
   }
   iva() {
     return this.precio * this.cantidad * 0.21;
@@ -17,8 +17,6 @@ let guardarLocal = (clave, valor) => {
   localStorage.setItem(clave, valor);
 };
 
-let almacenados = JSON.parse(localStorage.getItem("lista productos"));
-console.log(almacenados);
 /*objetos y arrays*/
 let productos = [];
 
@@ -63,18 +61,13 @@ function mapeo(productos) {
 
 /*producto 1*/
 
-let cantidad1 = 0;
-productos.push(new Producto("Agenda", 200, cantidad1));
-guardarLocal("lista productos", JSON.stringify(productos));
-
-/*producto 2*/
-
-let cantidad2 = 0;
-productos.push(new Producto("Anotador", 100, cantidad2));
+productos.push(new Producto("Agenda", 200, 0));
+productos.push(new Producto("Anotador", 100, 0));
+productos.push(new Producto("Cuaderno", 300, 0));
 guardarLocal("lista productos", JSON.stringify(productos));
 
 /*producto 3*/
-productos.push(new Producto("Cuaderno", 300, 0));
+
 /*funciones globales*/
 const suma = (a, b) => a + b;
 const resta = (a, b) => a - b;
@@ -86,32 +79,34 @@ const montoTotal = (a, b) =>
     ),
     suma(a.descuento(), b.descuento())
   );
-
+let almacenados = JSON.parse(localStorage.getItem("lista productos"));
 /*funcionamiento simulador*/
 $("#boton").on("click", () => {
-  /*cantidad 1*/
-  // $("#prod1").append(
-  //   `<div class=""> <p>${productos[0].nombre}: ${productos[0].cantidad} </p> </div>`
-  // );
-  // let inputValor1 = document.getElementById(`inputValor1`);
-  // inputValor1.setAttribute(`value`, `${productos[0].cantidad}`);
-  //productos[0].cantidad = parseInt(inputValor1);
-  /*cantidad 2*/
-  // $("#prod2").append(
-  //   `<div class=""> <p>${productos[1].nombre}: ${productos[1].cantidad} </p> </div>`
-  // );
-  // let inputValor2 = document.getElementById(`inputValor2`);
-  // inputValor2.setAttribute(`value`, `${productos[1].cantidad}`);
-  //productos[1].cantidad = parseInt(inputValor2);
-  let resultado = montoTotal(productos[0], productos[1]);
+  let almacenados = JSON.parse(localStorage.getItem("lista productos"));
+  almacenados = [
+    new Producto(
+      almacenados[0].nombre,
+      almacenados[0].precio,
+      almacenados[0].cantidad
+    ),
+    new Producto(
+      almacenados[1].nombre,
+      almacenados[1].precio,
+      almacenados[1].cantidad
+    ),
+  ];
+  let resultado = montoTotal(almacenados[0], almacenados[1]);
   /*resultado*/
-  console.log($(`#total`)[0]);
+  console.log($(`#total`));
 
-  $(`#total`).append(`${resultado}`);
+  $(`#total`)[0].innerHTML = "total: " + resultado;
 
-  $(`.btn btn-outline-warning`).prop("disabled", true);
-
-  $(`#mostrar`).show();
+  $("#buttonCompra1").prop("disabled", true);
+  $("#buttonCompra2").prop("disabled", true);
+  $("#menosProd1").prop("disabled", true);
+  $("#masProd1").prop("disabled", true);
+  $("#menosProd2").prop("disabled", true);
+  $("#masProd2").prop("disabled", true);
 });
 
 /*animaciones*/
@@ -135,7 +130,7 @@ $(`#news`).click(() => {
   });
 });
 
-mapeo(productos);
+mapeo(almacenados);
 
 /*busqueda*/
 $(`#buscar`).click(() => {
@@ -154,20 +149,18 @@ $(`#buscar`).click(() => {
   );
 
   $(`#volverInicio`).click(() => {
-    mapeo(productos);
+    mapeo(almacenados);
     $(`#volverInicio`).remove();
   });
 });
 /*funcionamiento botones*/
-let buttons = document.getElementsByClassName("btn btn-outline-warning");
-console.log(buttons);
 
-function sweetAlert() {
-  console.log(this.parentNode.childNodes[3].innerText);
+function sweetAlert(e) {
+  e.preventDefault();
+  let almacenados = JSON.parse(localStorage.getItem("lista productos"));
   let name = this.parentNode.childNodes[3].innerText;
-  let agregarCarrito = productos.find((prod) => prod.nombre == name);
+  let agregarCarrito = almacenados.find((prod) => prod.nombre == name);
   agregarCarrito.cantidad += 1;
-  guardarLocal("lista productos", JSON.stringify(productos));
   console.log(agregarCarrito);
   console.log("producto agregado");
   Swal.fire("Producto agregado", "Producto agregado al carrito", "success");
@@ -175,47 +168,54 @@ function sweetAlert() {
   if (agregarCarrito.nombre === `Agenda`) {
     $(`#product1`)
       .append(`<div class="row"><button  id="menosProd1" class="col btn btn-warning m-5">-</button>
-      <p class="col my-5">${productos[0].cantidad} </p>
+      <p id="cantidad1" class="col my-5">${almacenados[0].cantidad} </p>
       <button id="masProd1" class="col btn btn-warning m-5">+</button>
       </div>
   
     `);
-    $(`#buttonCompra1`).prop("disabled", true);
+    logicButtons();
   }
   if (agregarCarrito.nombre === `Anotador`) {
     $(`#product2`)
       .append(`<div class="row"><button  id="menosProd2" class="col btn btn-warning m-5">-</button>
-      <p class="col my-5">${productos[1].cantidad} </p>
+      <p id="cantidad2" class="col my-5">${almacenados[1].cantidad} </p>
       <button id="masProd2" class="col btn btn-warning m-5">+</button>
       </div>
   
     `);
-    $(`#buttonCompra2`).prop("disabled", true);
+    logicButtons();
   }
 }
 /*botones + y - */
-if (productos[0].cantidad > 0) {
-  $(`#menosProd1`).click(() => {
-    productos[0].cantidad -= 1;
-    guardarLocal("lista productos", JSON.stringify(productos));
-  });
-}
-$(`#masProd1`).click(() => {
-  productos[0].cantidad += 1;
-  guardarLocal("lista productos", JSON.stringify(productos));
-});
+function logicButtons() {
+  let almacenados = JSON.parse(localStorage.getItem("lista productos"));
 
-if (productos[1].cantidad > 0) {
+  $("#menosProd1").click(() => {
+    almacenados[0].cantidad -= 1;
+    $("#cantidad1")[0].innerHTML = almacenados[0].cantidad;
+    guardarLocal("lista productos", JSON.stringify(almacenados));
+  });
+
+  $(`#masProd1`).click(() => {
+    almacenados[0].cantidad += 1;
+    $("#cantidad1")[0].innerHTML = almacenados[0].cantidad;
+    guardarLocal("lista productos", JSON.stringify(almacenados));
+  });
+
   $(`#menosProd2`).click(() => {
-    productos[1].cantidad -= 1;
-    guardarLocal("lista productos", JSON.stringify(productos));
+    almacenados[1].cantidad -= 1;
+    $("#cantidad2")[0].innerHTML = almacenados[1].cantidad;
+    guardarLocal("lista productos", JSON.stringify(almacenados));
+  });
+
+  $(`#masProd2`).click(() => {
+    almacenados[1].cantidad += 1;
+    $("#cantidad2")[0].innerHTML = almacenados[1].cantidad;
+    guardarLocal("lista productos", JSON.stringify(almacenados));
   });
 }
-$(`#masProd2`).click(() => {
-  productos[1].cantidad += 1;
-  guardarLocal("lista productos", JSON.stringify(productos));
-});
 
+let buttons = document.getElementsByClassName("btn btn-outline-warning");
 for (let button of buttons) {
   button.addEventListener("click", sweetAlert);
 }
